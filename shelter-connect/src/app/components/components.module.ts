@@ -4,25 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-
-import { BrowsingPage } from './browsing.page';
-import { ComponentsModule } from '../../../components/components.module'
-
-const routes: Routes = [
-  {
-    path: '',
-    component: BrowsingPage
-  }
-];
+import { PetCardComponent } from './pet-card/pet-card.component'
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    ComponentsModule
   ],
-  declarations: [BrowsingPage],
+  declarations: [PetCardComponent],
+  exports: [PetCardComponent]
 })
-export class BrowsingPageModule {}
+export class ComponentsModule {}

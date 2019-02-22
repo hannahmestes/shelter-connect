@@ -1,5 +1,7 @@
 {
   "name": "shelter-connect",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
