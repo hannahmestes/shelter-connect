@@ -7,14 +7,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
   <pet-card [pet]="mock"></pet-card>
 
-<ion-row text-center>
+<ion-row text-center class="buttons">
   <ion-col>
-    <ion-button class="nav-button" shape="round" fill="outline">
-      <ion-icon name="arrow-dropleft" slot="icon-only"></ion-icon>
+    <ion-button class="nav-button" shape="round">
+      <ion-icon name="arrow-round-back" slot="icon-only"></ion-icon>
     </ion-button>
   </ion-col>
   <ion-col>
@@ -23,8 +23,8 @@
     </ion-button>
   </ion-col>
   <ion-col>
-    <ion-button class="nav-button" shape="round" fill="outline">
-      <ion-icon name="arrow-dropright" slot="icon-only"></ion-icon>
+    <ion-button class="nav-button" shape="round">
+      <ion-icon name="arrow-round-forward" slot="icon-only"></ion-icon>
     </ion-button>
   </ion-col>
 </ion-row>
