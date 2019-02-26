@@ -44,6 +44,11 @@ export class AnimalService {
     return this.animalsCollection.add(animal);
   }// end addAnimal
 
+  // updates an animal's information
+  updateAnimal(animal: Animal){
+    return this.animalsCollection.doc(animal.id).update(animal);
+  }// end updateAnimal
+
   // deletes an animal from the database
   deleteAnimal(id: string){
     return this.animalsCollection.doc(id).delete();
