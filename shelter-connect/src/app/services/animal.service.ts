@@ -29,19 +29,23 @@ export class AnimalService {
 
   } // end constructor
 
-  getAnimals(){
+  // returns all animals in the database
+  getAnimals(): Observable<Animal[]>{
     return this.animals;
-  }
+  }// end getAnimals
 
-  getAnimal(id: string){
+  // returns animal with the specified id
+  getAnimal(id: string): Animal{
     return this.animalsCollection.doc<Animal>(id).valueChanges();
-  }
+  }// end getAnimal
 
+  // adds an animal to the database
   addAnimal(animal: Animal){
     return this.animalsCollection.add(animal);
-  }
+  }// end addAnimal
 
+  // deletes an animal from the database
   deleteAnimal(id: string){
     return this.animalsCollection.doc(id).delete();
-  }
+  }// end deleteAnimal
 }
