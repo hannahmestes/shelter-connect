@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyCvj4BaoaunlTgEClN84yiIBC8EsXLABX4",
+    authDomain: "shelter-connect.firebaseapp.com",
+    databaseURL: "https://shelter-connect.firebaseio.com",
+    projectId: "shelter-connect",
+    storageBucket: "shelter-connect.appspot.com",
+    messagingSenderId: "343731643173"
+  },
+  
 };
 
 /*
