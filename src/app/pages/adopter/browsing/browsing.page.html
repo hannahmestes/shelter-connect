@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Browsing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <pet-card [pet]="mock"></pet-card>
+
+<ion-row text-center class="buttons">
+  <ion-col>
+    <ion-button class="nav-button" shape="round">
+      <ion-icon name="arrow-round-back" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-col>
+  <ion-col>
+    <ion-button class="like-button" shape="round" fill="clear">
+      <ion-icon class="heart-icon" name="heart" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-col>
+  <ion-col>
+    <ion-button class="nav-button" shape="round">
+      <ion-icon name="arrow-round-forward" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-col>
+</ion-row>
+
+</ion-content>
