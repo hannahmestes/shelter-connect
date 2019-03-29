@@ -3,6 +3,7 @@ import { Animal } from '../models/animal';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { ManageAnimalsPage } from '../pages/shelter/manage-animals/manage-animals.page';
 
 
 @Injectable({
