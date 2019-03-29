@@ -5,7 +5,7 @@ export class User{
     zipCode: string;
     email: string;
 
-    constructor(firstName, lastName, zipCode, email){
+    constructor(firstName?, lastName?, zipCode?, email?){
         this.firstName = firstName;
         this.lastName = lastName;
         this.zipCode = zipCode;

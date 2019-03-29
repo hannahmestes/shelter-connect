@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user';
+import { PasswordValidation } from '../../../validators/password-match.validator';
 
 @Component({
   selector: 'app-signup',
@@ -13,6 +14,7 @@ import { User } from '../../../models/user';
 export class SignupPage implements OnInit {
 
   signupForm: FormGroup;
+  user: User = new User();
 
   constructor(
     public authService: AuthService, 
@@ -27,13 +29,15 @@ export class SignupPage implements OnInit {
 
   createForm(){
     this.signupForm = new FormGroup({
-      firstNameFormControl: new FormControl(),
-      lastNameFormControl: new FormControl(),
-      emailFormControl: new FormControl(),
-      locationFormControl: new FormControl(),
-      passwordFormControl: new FormControl(),
-      confirmPasswordFormControl: new FormControl()
+      firstNameFormControl: new FormControl('', Validators.required),
+      lastNameFormControl: new FormControl('', Validators.required),
+      emailFormControl: new FormControl('', Validators.required),
+      locationFormControl: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+      passwordFormControl: new FormControl('', Validators.required),
+      confirmPasswordFormControl: new FormControl('', Validators.required)
     });
+
+    this.signupForm.setValidators(PasswordValidation.MatchPassword);
   }
 
   submit(){
