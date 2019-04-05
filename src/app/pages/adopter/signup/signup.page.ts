@@ -33,7 +33,7 @@ export class SignupPage implements OnInit {
       lastNameFormControl: new FormControl('', Validators.required),
       emailFormControl: new FormControl('', Validators.required),
       locationFormControl: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
-      passwordFormControl: new FormControl('', Validators.required),
+      passwordFormControl: new FormControl('', [Validators.required, Validators.minLength(6)]),
       confirmPasswordFormControl: new FormControl('', Validators.required)
     });
 
@@ -51,6 +51,23 @@ export class SignupPage implements OnInit {
     }).catch(err =>{
       console.log(err);
     })
+  }
+
+  validationMessages = {
+    firstNameFormControl: [{type: 'required', message:'First name is required.'}],
+    lastNameFormControl: [{type: 'required', message:'Last name is required.'}],
+    emailFormControl: [{type: 'required', message:'Email is required.'}],
+    locationFormControl: [{type: 'required', message: 'Zip code is required.'},
+               {type: 'minlength', message: 'Zip code must be 5 characters.'},
+               {type: 'maxlength', message: 'Zip code must be 5 charatcers.'}],
+    passwordFormControl: [{type: 'required', message: 'Password is required.'},
+                {type: 'minlength', message: 'Password must be at least 6 characters.'}]
+  }
+
+  hasError(formControlName: string, errorName: string){
+    let formControl = this.signupForm.controls[formControlName]; 
+    console.log(formControl, formControl.errors)
+    return formControl.dirty || formControl.touched && formControl.hasError(errorName);
   }
 
 }
