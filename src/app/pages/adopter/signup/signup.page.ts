@@ -66,7 +66,6 @@ export class SignupPage implements OnInit {
 
   hasError(formControlName: string, errorName: string){
     let formControl = this.signupForm.controls[formControlName]; 
-    console.log(formControl, formControl.errors)
     return formControl.dirty || formControl.touched && formControl.hasError(errorName);
   }
 
