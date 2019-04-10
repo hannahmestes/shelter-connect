@@ -12,6 +12,10 @@ export class LogoutPage implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter(){
     this.authService.logout();
     this.router.navigate(['/login']);
   }
