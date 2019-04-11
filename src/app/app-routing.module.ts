@@ -26,7 +26,9 @@ const routes: Routes = [
   { path: 'add-animal', loadChildren: './pages/shelter/add-animal/add-animal.module#AddAnimalPageModule' },
   { path: 'edit-animal', loadChildren: './pages/shelter/edit-animal/edit-animal.module#EditAnimalPageModule' },
   { path: 'manage-animals', loadChildren: './pages/shelter/manage-animals/manage-animals.module#ManageAnimalsPageModule' },
-  { path: 'logout', loadChildren: './pages/logout/logout.module#LogoutPageModule' }
+  { path: 'logout', loadChildren: './pages/logout/logout.module#LogoutPageModule' },
+  { path: 'forgot-password', loadChildren: './pages/forgot-password/forgot-password.module#ForgotPasswordPageModule' }
+
 ];
 
 @NgModule({
