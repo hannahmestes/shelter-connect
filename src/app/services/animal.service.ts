@@ -42,12 +42,12 @@ export class AnimalService {
 
   // adds an animal to the database
   addAnimal(animal: Animal){
-    return this.animalsCollection.add(animal);
+    return this.animalsCollection.add(Object.assign(new Object(), animal));
   }// end addAnimal
 
   // updates an animal's information
   updateAnimal(animal: Animal){
-    return this.animalsCollection.doc(animal.id).update(animal);
+    return this.animalsCollection.doc(animal.id).update(Object.assign(new Object(), animal));
   }// end updateAnimal
 
   // deletes an animal from the database
