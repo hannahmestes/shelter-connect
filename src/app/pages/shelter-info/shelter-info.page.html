@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Shelter Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<ion-card color="dark">
+
+    <ion-card-header>
+      <ion-card-title>
+         <b>
+            {{shelter.name}}
+
+        </b>
+
+      </ion-card-title>
+      
+      <ion-card-content>
+        <ion-row>
+          <h2>
+            {{shelter.address}}
+          </h2>
+
+        </ion-row>
+
+        <ion-row>
+            <ion-icon name = "mail" class="ion-padding-end"></ion-icon>
+              <h2>
+                {{shelter.email}}
+             </h2>
+
+        </ion-row>
+        <ion-row>
+            <ion-icon name = "information-circle-outline" class="ion-padding-end"></ion-icon>
+            <h2>
+          
+            {{shelter.bio}}
+          </h2>
+
+        </ion-row>
+
+        <ion-row>
+          <ion-icon name = "call" class = "ion-padding-end"></ion-icon>
+          <h2>
+            {{shelter.phone}}
+         </h2>
+        </ion-row>
+          
+
+        <ion-row>
+          <ion-col *ngFor="let pet_image of pet_images">
+            <img [src]= "pet_image"> 
+
+          </ion-col>
+        </ion-row>
+        
+        
+        
+      </ion-card-content>
+
+
+
+    </ion-card-header>
+    
+</ion-card>
+</ion-content>
+
+

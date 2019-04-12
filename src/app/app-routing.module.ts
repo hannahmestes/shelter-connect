@@ -27,7 +27,8 @@ const routes: Routes = [
   { path: 'edit-animal', loadChildren: './pages/shelter/edit-animal/edit-animal.module#EditAnimalPageModule' },
   { path: 'manage-animals', loadChildren: './pages/shelter/manage-animals/manage-animals.module#ManageAnimalsPageModule' },
   { path: 'logout', loadChildren: './pages/logout/logout.module#LogoutPageModule' },
-  { path: 'forgot-password', loadChildren: './pages/forgot-password/forgot-password.module#ForgotPasswordPageModule' }
+  { path: 'forgot-password', loadChildren: './pages/forgot-password/forgot-password.module#ForgotPasswordPageModule' },  { path: 'shelter-info', loadChildren: './pages/shelter-info/shelter-info.module#ShelterInfoPageModule' }
+
 
 ];
 
