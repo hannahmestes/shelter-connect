@@ -2,4 +2,4 @@
 Project for TTU Software Engineering II CS4635
 
 Contributors:
-Hannah Estes
+Hannah Estes, Mia Ward
