@@ -11,8 +11,9 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   private usersCollection: AngularFirestoreCollection<User>;
+  public currentUser$: Observable<User>
 
-  constructor(db: AngularFirestore) { 
+  constructor(private db: AngularFirestore) { 
     this.usersCollection = db.collection('users');
 
   }
@@ -32,5 +33,27 @@ export class UserService {
   getUser(userId: string): Observable<User>{
     return this.usersCollection.doc<User>(userId).valueChanges();
   }// end getUser
+
+  setCurrentUser(email: string){
+    this.currentUser$ = this.db.collection('users', ref=> ref.where('email', '==', email)).snapshotChanges().pipe(
+      map((actions: any) =>{
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      }),
+      map(
+      users => users[0]
+    ))
+  }
+
+  likeAnimal(animalId){
+    this.currentUser$.subscribe(res => {
+      console.log(res);
+      res.likedAnimals.push(animalId);
+      this.updateUser(res);
+    }).unsubscribe();
+  }
   
 }

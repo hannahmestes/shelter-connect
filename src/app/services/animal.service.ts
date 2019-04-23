@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Animal } from '../models/animal';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { ManageAnimalsPage } from '../pages/shelter/manage-animals/manage-animals.page';
 
@@ -11,14 +11,14 @@ import { ManageAnimalsPage } from '../pages/shelter/manage-animals/manage-animal
 })
 export class AnimalService {
 
-  private animals: Observable<Animal[]>;
+  public animals$: Observable<Animal[]>;
   private animalsCollection: AngularFirestoreCollection<Animal>;
 
   constructor(db: AngularFirestore) { 
 
     this.animalsCollection = db.collection('animals');
 
-    this.animals = this.animalsCollection.snapshotChanges().pipe(
+    this.animals$ = this.animalsCollection.snapshotChanges().pipe(
       map((actions: any) =>{
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -29,11 +29,6 @@ export class AnimalService {
     );
 
   } // end constructor
-
-  // returns all animals in the database
-  getAnimals(): Observable<Animal[]>{
-    return this.animals;
-  }// end getAnimals
 
   // returns animal with the specified id
   getAnimal(id: string): Observable<Animal>{
@@ -54,4 +49,5 @@ export class AnimalService {
   deleteAnimal(id: string){
     return this.animalsCollection.doc(id).delete();
   }// end deleteAnimal
+
 }

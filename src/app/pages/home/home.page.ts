@@ -9,7 +9,6 @@ import { AnimalService } from '../../services/animal.service'
 export class HomePage {
 
   constructor(private animalService: AnimalService){
-    animalService.getAnimals().subscribe(res => console.log(res));
   }
 
 

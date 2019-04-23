@@ -31,6 +31,5 @@ export class AuthService {
 
   forgotpassword(email){
     return this.afAuth.auth.sendPasswordResetEmail(email);
-
   }
 }

@@ -51,6 +51,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.authService.user$.subscribe(res => {
+        console.log(res);
         this.user = res;
         if(!res && !(this.router.url=="/login" || 
                     this.router.url=="/signup" || 
