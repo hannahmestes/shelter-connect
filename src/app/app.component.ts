@@ -63,4 +63,13 @@ export class AppComponent {
       });
     });
   }
+
+  shouldNotShowMenu(){
+    console.log(this.router.url);
+    return (this.router.url=="/login" || 
+                    this.router.url=="/signup" || 
+                    this.router.url=="/adopter-signup" || 
+                    this.router.url=="/shelter-signup" ||
+                    this.router.url=="/logout");
+  }
 }

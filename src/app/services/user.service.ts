@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { switchMap, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 
 @Injectable({
@@ -11,11 +11,10 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   private usersCollection: AngularFirestoreCollection<User>;
-  public currentUser$: Observable<User>
+  public currentUser: User
 
   constructor(private db: AngularFirestore) { 
     this.usersCollection = db.collection('users');
-
   }
 
   addUser(user: User): Promise<firebase.firestore.DocumentReference>{
@@ -35,7 +34,8 @@ export class UserService {
   }// end getUser
 
   setCurrentUser(email: string){
-    this.currentUser$ = this.db.collection('users', ref=> ref.where('email', '==', email)).snapshotChanges().pipe(
+    console.log(email);
+    this.db.collection('users', ref=> ref.where('email', '==', email)).snapshotChanges().pipe(
       map((actions: any) =>{
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -44,16 +44,20 @@ export class UserService {
         })
       }),
       map(
-      users => users[0]
-    ))
+      users => {return users[0]}
+    )).subscribe(user => this.currentUser = user);
   }
 
   likeAnimal(animalId){
-    this.currentUser$.subscribe(res => {
-      console.log(res);
-      res.likedAnimals.push(animalId);
-      this.updateUser(res);
-    }).unsubscribe();
+      if(!this.currentUser.likedAnimals.includes(animalId)) {
+        this.currentUser.likedAnimals.push(animalId);
+        this.updateUser(this.currentUser);
+      }
+  }
+
+  unlikeAnimal(animalId){
+    this.currentUser.likedAnimals = this.currentUser.likedAnimals.filter(likedAnimalId => likedAnimalId != animalId);
+    this.updateUser(this.currentUser);
   }
   
 }

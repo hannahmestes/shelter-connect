@@ -20,13 +20,13 @@ export class BrowsingPage implements OnInit {
 
 
   constructor(private animalService: AnimalService, private userService: UserService) {
+   }
+
+  ngOnInit() {
     this.animalService.animals$.subscribe(res => {
       this.animals = res;
       this.currentAnimal = res[0];
     });
-   }
-
-  ngOnInit() {
   }
 
   nextAnimal(){
@@ -40,6 +40,7 @@ export class BrowsingPage implements OnInit {
   }
 
   likeAnimal(){
+    console.log(this.currentAnimal)
     this.userService.likeAnimal(this.currentAnimal.id);
   }
 

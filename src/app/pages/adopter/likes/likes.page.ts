@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../services/user.service';
+import { Animal } from '../../../models/animal';
 
 @Component({
   selector: 'app-likes',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LikesPage implements OnInit {
 
-  constructor() { }
+  likedAnimals: string[];
+
+  constructor(private userService: UserService) { 
+    this.likedAnimals = userService.currentUser.likedAnimals;
+    console.log(this.likedAnimals);
+  }
 
   ngOnInit() {
   }
