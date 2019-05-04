@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
 
   submit(){
     this.authService.login(this.loginForm.controls['usernameFormControl'].value, this.loginForm.controls['passwordFormControl'].value).then(res =>{
-      this.router.navigate(['/browsing']); // TODO: set to page that makes sense based on user type
+      this.router.navigate(['/settings']); // TODO: set to page that makes sense based on user type
     }).catch(err =>{
       console.log(err); 
       if(err.code == "auth/invalid-email"){

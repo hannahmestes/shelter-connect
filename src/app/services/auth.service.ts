@@ -33,4 +33,9 @@ export class AuthService {
     return this.afAuth.auth.sendPasswordResetEmail(email);
 
   }
+
+  changepassword(password){
+    return this.afAuth.user.subscribe(user => user.updatePassword(password));
+
+  }
 }

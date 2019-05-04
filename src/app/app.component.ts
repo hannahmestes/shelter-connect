@@ -31,6 +31,11 @@ export class AppComponent {
       title: 'Logout',
       url: '/logout',
       icon: 'log-out'
+    },
+    {
+      title: 'Settings',
+      url: '/settings',
+      icon: 'cog'
     }
   ];
 
@@ -50,16 +55,16 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.authService.user$.subscribe(res => {
-        this.user = res;
-        if(!res && !(this.router.url=="/login" || 
-                    this.router.url=="/signup" || 
-                    this.router.url=="/adopter-signup" || 
-                    this.router.url=="/shelter-signup" ||
-                    this.router.url=="/logout")){
-          this.router.navigate(["/login"]);
-        }
-      });
+      // this.authService.user$.subscribe(res => {
+      //   this.user = res;
+      //   if(!res && !(this.router.url=="/login" || 
+      //               this.router.url=="/signup" || 
+      //               this.router.url=="/adopter-signup" || 
+      //               this.router.url=="/shelter-signup" ||
+      //               this.router.url=="/logout")){
+      //     this.router.navigate(["/login"]);
+      //   }
+      // });
     });
   }
 }
