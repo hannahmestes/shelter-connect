@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 import { PetCardComponent } from './pet-card/pet-card.component'
+import { PetListingComponent } from './pet-listing/pet-listing.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { PetCardComponent } from './pet-card/pet-card.component'
     FormsModule,
     IonicModule,
   ],
-  declarations: [PetCardComponent],
-  exports: [PetCardComponent]
+  declarations: [PetCardComponent, PetListingComponent],
+  exports: [PetCardComponent, PetListingComponent]
 })
 export class ComponentsModule {}

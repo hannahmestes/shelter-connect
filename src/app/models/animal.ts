@@ -9,4 +9,5 @@ export class Animal{
     shelterId: string;
     color: string;
     bio: string;
+    imageUrl: string;
 }

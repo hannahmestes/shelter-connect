@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   formError: string;
 
-  constructor(private authService: AuthService, private router: Router) { 
+  constructor(private authService: AuthService, private router: Router, private userService: UserService) { 
     this.createForm();
     this.formError="";
   }
@@ -30,6 +31,7 @@ export class LoginPage implements OnInit {
 
   submit(){
     this.authService.login(this.loginForm.controls['usernameFormControl'].value, this.loginForm.controls['passwordFormControl'].value).then(res =>{
+      this.userService.setCurrentUser(this.loginForm.controls['usernameFormControl'].value);
       this.router.navigate(['/browsing']); // TODO: set to page that makes sense based on user type
     }).catch(err =>{
       console.log(err); 

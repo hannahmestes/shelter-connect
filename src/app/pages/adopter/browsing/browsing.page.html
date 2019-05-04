@@ -8,22 +8,24 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="currentAnimal" class="pet-card">
+  <pet-card [pet]="currentAnimal"></pet-card>
+  </div>
 
-  <pet-card [pet]="mock"></pet-card>
 
 <ion-row text-center class="buttons">
   <ion-col>
-    <ion-button class="nav-button" shape="round">
+    <ion-button [disabled]="browsingCounter <= 0" class="nav-button" shape="round" (click)="prevAnimal()">
       <ion-icon name="arrow-round-back" slot="icon-only"></ion-icon>
     </ion-button>
   </ion-col>
   <ion-col>
-    <ion-button class="like-button" shape="round" fill="clear">
+    <ion-button class="like-button" shape="round" fill="clear" (click)="likeAnimal()">
       <ion-icon class="heart-icon" name="heart" slot="icon-only"></ion-icon>
     </ion-button>
   </ion-col>
   <ion-col>
-    <ion-button class="nav-button" shape="round">
+    <ion-button class="nav-button" shape="round" (click)="nextAnimal()">
       <ion-icon name="arrow-round-forward" slot="icon-only"></ion-icon>
     </ion-button>
   </ion-col>

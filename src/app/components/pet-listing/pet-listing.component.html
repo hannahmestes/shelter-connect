@@ -1,0 +1,15 @@
+<ion-item-sliding *ngIf="animal">
+  <ion-item>
+    <ion-label>{{ animal.name }}</ion-label>
+    <ion-avatar slot="start">
+      <img [src]="animal.imageUrl">
+    </ion-avatar>
+  </ion-item>
+
+  <ion-item-options side="end">
+    <ion-item-option (click)="unlike()">
+      <ion-icon name="heart-dislike"></ion-icon>
+    </ion-item-option>
+  </ion-item-options>
+
+</ion-item-sliding>
