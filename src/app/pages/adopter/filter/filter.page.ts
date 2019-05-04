@@ -14,7 +14,7 @@ export class FilterPage implements OnInit {
 
   filterForm: FormGroup
 
-  constructor(private userService: AuthService, private filterService: FilterService) { 
+  constructor(private userService: UserService, private filterService: FilterService) { 
     this.createForm();
   }
 
@@ -36,13 +36,11 @@ export class FilterPage implements OnInit {
   submit(){
 
     console.log(this.filterForm.controls["age"].value)
-    this.userService.user$.subscribe(user =>{
-      let filter = new Filter(user.id, this.filterForm.controls["age"].value.lower, this.filterForm.controls["age"].value.upper,
+      let filter = new Filter(this.userService.currentUser.id, this.filterForm.controls["age"].value.lower, this.filterForm.controls["age"].value.upper,
       this.filterForm.controls["breed"].value, this.filterForm.controls["species"].value, this.filterForm.controls["sex"].value, 
       this.filterForm.controls["color"].value)
       console.log(filter);
       this.filterService.addFilter(filter);
-    }).unsubscribe();
   }
 
 
