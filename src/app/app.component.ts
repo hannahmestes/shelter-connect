@@ -31,6 +31,11 @@ export class AppComponent {
       title: 'Logout',
       url: '/logout',
       icon: 'log-out'
+    },
+    {
+      title: 'Settings',
+      url: '/settings',
+      icon: 'cog'
     }
   ];
 
@@ -50,6 +55,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
       this.authService.user$.subscribe(res => {
         console.log(res);
         this.user = res;
