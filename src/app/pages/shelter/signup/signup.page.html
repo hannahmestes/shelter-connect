@@ -1,9 +1,98 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>signup</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <form [formGroup]="signupForm">
+    
+    <ion-item>
+      <ion-label position="floating">Shelter Name</ion-label>
+      <ion-input formControlName="shelterNameFormControl"></ion-input>
+    </ion-item>
 
+    <div *ngFor="let error of validationMessages.shelterNameFormControl">
+        <p class="error" *ngIf="hasError('shelterNameFormControl', error.type)">
+          {{ error.message }}
+        </p>
+      </div>
+
+    <ion-item>
+      <ion-label position="floating">Phone Number</ion-label>
+      <ion-input formControlName="phoneFormControl"></ion-input>
+    </ion-item>
+
+    <div *ngFor="let error of validationMessages.phoneFormControl">
+        <p class="error" *ngIf="hasError('phoneFormControl', error.type)">
+          {{ error.message }}
+        </p>
+      </div>
+
+    <ion-item>
+      <ion-label position="floating">Bio</ion-label>
+      <ion-input formControlName="bioFormControl"></ion-input>
+    </ion-item>
+
+      <div *ngFor="let error of validationMessages.bioFormControl">
+        <p class="error" *ngIf="hasError('bioFormControl', error.type)">
+          {{ error.message }}
+        </p>
+      </div>
+
+    <ion-item>
+      <ion-label position="floating">Zip Code</ion-label>
+      <ion-input formControlName="zipCodeFormControl"></ion-input>
+    </ion-item>
+
+    <div *ngFor="let error of validationMessages.zipCodeFormControl">
+        <p class="error" *ngIf="hasError('zipCodeFormControl', error.type)">
+          {{ error.message }}
+        </p>
+      </div>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="emailFormControl"></ion-input>
+    </ion-item>
+
+    <div *ngFor="let error of validationMessages.emailFormControl">
+        <p class="error" *ngIf="hasError('emailFormControl', error.type)">
+          {{ error.message }}
+        </p>
+      </div>
+
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input formControlName="addressFormControl"></ion-input>
+    </ion-item>
+
+    <div *ngFor="let error of validationMessages.addressFormControl">
+        <p class="error" *ngIf="hasError('addressFormControl', error.type)">
+          {{ error.message }}
+        </p>
+      </div>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="passwordFormControl" type="password"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of validationMessages.passwordFormControl">
+        <div class="error" *ngIf="hasError('passwordFormControl', error.type)">
+          {{ error.message }}
+        </div>
+      </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input formControlName="confirmPasswordFormControl" type="password"></ion-input>
+    </ion-item>
+
+    <ion-button margin-top (click)="submit()">Sign Up</ion-button>
+  </form>
 </ion-content>
+

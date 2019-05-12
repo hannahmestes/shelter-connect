@@ -1,9 +1,53 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>filter</ion-title>
+    <ion-title>Filter Pets</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <form [formGroup]="filterForm">
+        <ion-item>
+          <ion-label>Species</ion-label>
+          <ion-select formControlName="species">
+            <ion-select-option value="cat">Cats</ion-select-option>
+            <ion-select-option value="dog">Dogs</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Sex</ion-label>
+            <ion-select formControlName="sex">
+              <ion-select-option value="f">Female</ion-select-option>
+              <ion-select-option value="m">Male</ion-select-option>
+            </ion-select>
+          </ion-item>
+        <ion-item>
+            <ion-label>Color</ion-label>
+            <ion-select multiple="true" formControlName="color">
+              <ion-select-option value="black">Black</ion-select-option>
+              <ion-select-option value="brown">Brown</ion-select-option>
+              <ion-select-option value="white">White</ion-select-option>
+              <ion-select-option value="golden">Golden</ion-select-option>
+              <ion-select-option value="orange">Orange</ion-select-option>
+              <ion-select-option value="grey">Grey</ion-select-option>
+              <ion-select-option value="red">Red</ion-select-option>
+            </ion-select>
+          </ion-item>
+        <ion-item>
+            <ion-label>Breed</ion-label>
+            <ion-select formControlName="breed">
+              <ion-select-option value="small">Small Breed</ion-select-option>
+              <ion-select-option value="medium">Medium Breed</ion-select-option>
+              <ion-select-option value="large">Large Breed</ion-select-option>
+            </ion-select>
+          </ion-item>
+      <ion-item>
+              <ion-label>Age</ion-label>
+
+        <ion-range pin="true" formControlName="age" dualKnobs="true" min="0" max="10" step="1" snaps="true"></ion-range>
+
+      </ion-item>
+
+      <ion-button (click)="submit()">Submit</ion-button>
+  </form>
 
 </ion-content>
