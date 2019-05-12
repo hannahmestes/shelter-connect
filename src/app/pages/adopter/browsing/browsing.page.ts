@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../../models/animal';
 import { AnimalService } from '../../../services/animal.service';
 import { UserService } from '../../../services/user.service';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   selector: 'app-browsing',
@@ -19,12 +20,12 @@ export class BrowsingPage implements OnInit {
    */
 
 
-  constructor(private animalService: AnimalService, private userService: UserService) {
+  constructor(private animalService: AnimalService, private userService: UserService, private filterService: FilterService) {
    }
 
   ngOnInit() {
     this.animalService.animals$.subscribe(res => {
-      this.animals = res;
+      this.animals = this.filterService.filterAnimals(res);
       this.currentAnimal = res[0];
     });
   }
